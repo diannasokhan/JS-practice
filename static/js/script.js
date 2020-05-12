@@ -140,3 +140,5 @@ function reset(){
          allButtons[i].setAttribute("class", copyAllButtons[i])
      }
  } 
+
+ 
