@@ -1,3 +1,4 @@
+//Challenge 1
 function getAgeInDays(){
     let ageInYears = prompt("How old are you?");
     let ageInDays = ageInYears * 365;
@@ -12,7 +13,8 @@ function reset(){
     document.getElementById("ageInDays").remove();
 }
 
- function generateCat(){
+//Challenge 2
+function generateCat(){
      let image = document.createElement("img");
      let div = document.getElementById("flex-cat-gen");
      image.src = "http://thecatapi.com/api/images/get?format=src&type=gif&size=small";
@@ -24,6 +26,7 @@ function reset(){
      document.getElementById("cat-gif").remove();
  }
 
+ //Challenge 3
  function rpsGame(yourChoice){
      console.log(yourChoice);
       let humanChoice = yourChoice.id;
@@ -90,6 +93,7 @@ function reset(){
      document.getElementById("flex-box-rps-div").append(botDiv);
  }
 
+ //Challenge 4
  const allButtons = document.getElementsByTagName("button");
 
  const copyAllButtons = [];
@@ -140,5 +144,49 @@ function reset(){
          allButtons[i].setAttribute("class", copyAllButtons[i])
      }
  } 
+
+ //Challenge 5
+ let blackjackGame = {
+     "you": {"scoreSpan": "#your-blackjack-result", "div": "#your-box", "score": 0},
+     "dealer": {"scoreSpan": "#dealer-blackjack-result", "div": "#dealer-box", "score": 0},
+     "cards": ["2", "3", "4", "5", "6", "7","8", "9", "10", "J", "Q", "K", "A"],
+     "cardsMap":{"2": 2, "3": 3, "4": 4, "5": 5, "6": 6, "7": 7, "8": 8, "9": 9, "10": 10, "J": 10, "Q": 10, "K": 10, "A": [1, 11]}
+ };
+
+ const YOU = blackjackGame["you"];
+ const DEALER = blackjackGame["dealer"];
+
+ const hitSound = new Audio("static/sounds/swish.m4a");
+
+ document.querySelector("#blackjack-hit-button").addEventListener("click", blackjackHit);
+ document.querySelector("#blackjack-deal-button").addEventListener("click", blackjackDeal);
+
+ function blackjackHit(){
+     let card = randomCard();
+    showCard(YOU, card);
+    console.log(card)
+ }
+
+ function showCard(activePlayer, card){
+     let cardImage = document.createElement("img");
+    cardImage.src = `static/images/${card}.png`;
+    cardImage.height = 100;
+    cardImage.width = 75;
+    document.querySelector(activePlayer["div"]).appendChild(cardImage);
+    hitSound.play();
+ }
+
+ function blackjackDeal(){
+     let yourImages = document.querySelector(".flex-blackjack-row-1").querySelectorAll("img");
+     for(let i = 0; i < yourImages.length; i++){
+         yourImages[i].remove();
+     }
+ }
+
+function randomCard(){
+    let randomIndex = Math.floor(Math.random() * 13);
+    return blackjackGame["cards"][randomIndex];
+}
+
 
  

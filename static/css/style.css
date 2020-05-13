@@ -30,6 +30,10 @@
      padding: 10px;
  }
 
+ #your-box img, #dealer-box img{
+  margin: 10px;
+ }
+
  .flex-blackjack-row-2 div {
      padding: 10px;
  }
@@ -59,3 +63,4 @@
  .flex-box-rps img:hover {
      box-shadow: 0px 10px 50px blue;
  }
+
